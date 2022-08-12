@@ -1,5 +1,12 @@
 .container {
     width: 900px;
+    margin-top: 20px;
+}
+
+.reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .row-grid {

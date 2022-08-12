@@ -1,12 +1,15 @@
-let sizeGrid = 16;
+const resetButton = document.querySelector('button')
 const container = document.querySelector ('.container')
+
 const createGrid = (squareGrids) => {
+    const wrapper = document.createElement('div')
+    wrapper.classList.add('wrapper')
     for(let i = 0; i < squareGrids; i++){
         const row = document.createElement('div')
         row.classList.add('row-grid')
         
         for(let j = 0; j < squareGrids; j++ ) {
-            const widthAndHeight = 900 / sizeGrid
+            const widthAndHeight = 900 / squareGrids
             const boxGrid = document.createElement('div')
             boxGrid.classList.add('box-grid')
             boxGrid.style.width = `${widthAndHeight}px`
@@ -17,8 +20,23 @@ const createGrid = (squareGrids) => {
             })
             row.appendChild(boxGrid)
         }
-        container.appendChild(row)
+        wrapper.appendChild(row)
     }
+    container.appendChild(wrapper)
 }
 
-createGrid(sizeGrid)
+resetButton.addEventListener('click', () => {
+    let userSize = Number(prompt('Choose dimensions for the grid'))
+    while (userSize > 100) {
+        userSize = Number(prompt('Pick a number less than 100'))
+    }
+
+    const wrapper = document.querySelector('.wrapper')
+    if(!wrapper) {
+        createGrid(userSize)
+    } else {
+        wrapper.remove()
+        createGrid(userSize)
+    }
+    
+})
