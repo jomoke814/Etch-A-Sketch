@@ -1,6 +1,13 @@
 const resetButton = document.querySelector('button')
 const container = document.querySelector ('.container')
 
+function createRandomRGB() {
+    const r = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+    return { r, g, b}
+}
+
 const createGrid = (squareGrids) => {
     const wrapper = document.createElement('div')
     wrapper.classList.add('wrapper')
@@ -9,6 +16,7 @@ const createGrid = (squareGrids) => {
         row.classList.add('row-grid')
         
         for(let j = 0; j < squareGrids; j++ ) {
+            const {r, g, b} = createRandomRGB()
             const widthAndHeight = 900 / squareGrids
             const boxGrid = document.createElement('div')
             boxGrid.classList.add('box-grid')
@@ -16,7 +24,9 @@ const createGrid = (squareGrids) => {
             boxGrid.style.height = `${widthAndHeight}px`
 
             boxGrid.addEventListener('mouseenter', () => {
-                boxGrid.style.backgroundColor = 'black'
+                const currentOpacity = Number(boxGrid.style.opacity)
+                boxGrid.style.background = `rgb(0, 0, 0)`
+                boxGrid.style.opacity = currentOpacity + .1
             })
             row.appendChild(boxGrid)
         }
