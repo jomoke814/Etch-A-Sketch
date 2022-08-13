@@ -1,12 +1,13 @@
-.container {
-    width: 900px;
-    margin-top: 20px;
-}
-
-.reset {
+h1, .reset  {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container {
+    width: 960px;
+    margin-top: 20px;
+    margin-left: 200px;
 }
 
 .row-grid {
