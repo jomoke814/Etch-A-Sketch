@@ -1,4 +1,4 @@
-const resetButton = document.querySelector('button')
+const resetButton = document.querySelector('.reset')
 const container = document.querySelector ('.container')
 
 function createRandomRGB() {
